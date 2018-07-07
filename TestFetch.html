@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <script type="text/javascript">
+            var searchData = {
+                "query": {
+                    "bool": {
+                        "should": [
+                            {
+                                "match": {"firstname":"raymond"}
+                            },
+                            {
+                                "match": {"lastname":"ong"}
+                            }
+                        ]
+                    }
+                }
+            };
+            fetch('http://127.0.0.1:9200/votersearcher2/_search', {        
+                method: 'post',
+                body: JSON.stringify(searchData)
+                //body: '{"query":{"bool":{"must":[{"match_all":{}}],"must_not":[],"should":[]}},"from":0,"size":10,"sort":[],"aggs":{}}'
+            })
+            //.then((resp) => (resp.json()))
+            .catch(error => console.error(error));
+
+            console.log('Hello');
+        </script>
+    </body>
+</html>
